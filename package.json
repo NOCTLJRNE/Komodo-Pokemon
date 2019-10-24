@@ -1,0 +1,23 @@
+{
+  "name": "komodo-pokemon",
+  "version": "1.0.0",
+  "description": "Pokemon NFT created on Komodo",
+  "author": "NOCTLJRNE",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "bitcoind-rpc": "^0.8.1",
+    "node-komodo-rpc": "^2.0.1",
+    "nuxt": "^2.0.0"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0"
+  }
+}
