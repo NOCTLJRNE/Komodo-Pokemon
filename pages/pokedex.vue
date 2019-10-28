@@ -108,7 +108,7 @@
 </template>
 
 <script>
-import RpcClient from "bitcoind-rpc";
+import RpcClient from "~/modules/bitcoindrpc";
 import pokemontxlist from "~/static/pokemontxList.js";
 import axios from "axios";
 import PokemonCard from "~/components/PokemonCard";
