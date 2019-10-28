@@ -46,7 +46,7 @@ $ npm run build
 $ npm run start
 
 ```
-I run into an issue related to "Access-Control-Allow-Origin" header, basically the web browser blocks any result returned by an rpc request, you can read about it [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigi) . I have to properly set up my server-side application on the localhost, it propably will take some times so for now I use this work around [link](https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome).
+I run into an issue related to "Access-Control-Allow-Origin" header, basically the web browser blocks any result returned by my rpc requests because I didn't properly set up my server-side application on the localhost, you can read about it [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigi) . For now I use this work around [link](https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome).
 On Ubuntu:
 ``` bash
 # launch a google chrome window with --disable-web-security arguement
