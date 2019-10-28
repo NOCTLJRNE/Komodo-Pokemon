@@ -7,11 +7,9 @@ Follow these instructions to install komodo on your local host [instructions](ht
 ``` bash
 # launch MORTY chain
 $ komodod -pubkey=$pubkey -ac_name=MORTY -ac_supply=90000000000 -ac_reward=100000000 -ac_cc=3 -ac_staked=10 -addnode=95.217.44.58 -addnode=138.201.136.145 &
-
-``` bash
-# launch MORTY chain
+# import your private key
 $ komodo-cli -ac_name=MORTY importprivkey <your_priv_key>
-
+```
 
 Rename rpcConfig_sample.js into rpcConfig.js and 
 
