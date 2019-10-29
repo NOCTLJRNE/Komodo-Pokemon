@@ -60,4 +60,4 @@ Browse to http://localhost:3000/pokedex (if you have succesfully run npm run sta
 All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
 You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon !
-"# Komodo-Pokemon" 
+![stage1](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/master/img/01.JPG)
