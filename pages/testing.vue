@@ -1,4 +1,3 @@
-
 <template>
   <v-form>
     <v-container>
@@ -49,12 +48,6 @@
         <v-col cols="12" sm="6" md="3">
           <v-btn color="success" v-on:click="verifySignature" :disabled="isMine">Verify</v-btn>
         </v-col>
-        <!-- <v-col cols="12" sm="6" md="3">
-          <v-btn color="warning" v-on:click="testHandler">Test</v-btn>
-        </v-col>
-        <v-col cols="12" sm="6" md="3">
-          <v-btn color="warning" v-on:click="posttHandler">Post</v-btn>
-        </v-col> -->
         <!-- <v-col cols="12" sm="6" md="6">
           <v-alert
             dense
@@ -150,11 +143,11 @@ export default {
     tokenListDataRaw: [],
     tokenInfoDataRaw: [],
     // balanceListDataRaw: [],
-    balanceMapping: {},
+    balanceMapping: {}, // {"token_txid": "token balance "}
     totalBalance: 0,
     pokemonAPIDataLoaded: false,
     // myPokemonAPIDataRaw: [],
-    myPokemonAPIDataRaw: {},
+    myPokemonAPIDataRaw: {}, // {"token_txid": "data returned from API"}
     isMine: false,
     signed: false,
     showWarning: false
@@ -187,7 +180,6 @@ export default {
       //   console.log(`host:${this.configdata.rpchost}, port:${this.configdata.rpcport}, user:${this.configdata.rpcuser}, password:${this.configdata.rpcpassword}`);
       //var RpcClient = require("bitcoind-rpc");
       //const RpcClient = require("node-komodo-rpc");
-      const localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/calls`;
       var config = {
         protocol: "http",
         user: this.configData.rpcUser
@@ -215,41 +207,48 @@ export default {
       //   });
       var temp = [];
       let vm = this;
-      // Get tokens List
-      //   this.rpc.tokenList(function(err, ret) {
+      this.rpc.tokenList(function(err, ret) {
+        if (err) {
+          console.error(err);
+        } else {
+          //   console.log(ret.result);
+          vm.tokenListDataRaw = [...ret.result];
+          //   console.log("ret result", vm.tokenListDataRaw);
+        }
+      });
+
+      Object.keys(pokemontxlist).forEach(tokenid => {
+        vm.rpc.tokenInfo(tokenid, function(err, ret) {
+          if (err) {
+            console.error(err);
+          } else {
+            // vm.tokenInfoDataRaw.push(ret.result);
+          }
+        });
+      });
+      // Object.keys(pokemontxlist).forEach(tokenid => {
+      //   var arg = vm.pubkeyData ? [tokenid, vm.pubkeyData] : [tokenid];
+      //   vm.rpc.tokenBalance(...arg, function(err, ret) {
       //     if (err) {
       //       console.error(err);
       //     } else {
-      //       //   console.log(ret.result);
-      //       vm.tokenListDataRaw = [...ret.result];
-      //       //   console.log("ret result", vm.tokenListDataRaw);
+      //       vm.$set(vm.balanceMapping, ret.result.tokenid, ret.result.balance);
+
+      //       var pokemonName = pokemontxlist[tokenid];
+      //       var pokemonUrl = `https://pokeapi.glitch.me/v1/pokemon/${pokemonName}`;
+      //       var balance = ret.result.balance;
+      //       vm.totalBalance += balance;
+      //       axios
+      //         .get(pokemonUrl)
+      //         .then(reponse => {
+      //           console.log("axios called!");
+      //           vm.$set(vm.myPokemonAPIDataRaw, tokenid, reponse.data);
+      //         })
+      //         .catch(error => console.log(error))
+      //         .finally(() => (vm.pokemonAPIDataLoaded = true));
       //     }
       //   });
-
-      //   axios
-      //     .post(
-      //       localHost,
-      //       {
-      //         method: "tokenList",
-      //         params: []
-      //       },
-      //       {
-      //         params: "searchTerm"
-      //       }
-      //     )
-      //     .then(response => (vm.tokenListDataRaw = [...response.data]))
-      //     .catch(error => console.error(error));
-
-      //   Object.keys(pokemontxlist).forEach(tokenid => {
-      //     vm.rpc.tokenInfo(tokenid, function(err, ret) {
-      //       if (err) {
-      //         console.error(err);
-      //       } else {
-      //         // vm.tokenInfoDataRaw.push(ret.result);
-      //       }
-      //     });
-      //   });
-
+      // });
       this.balanceChecking();
       if (!this.interval) {
         this.interval = setInterval(this.balanceChecking, 10000);
@@ -275,33 +274,23 @@ export default {
       let vm = this;
       Object.keys(pokemontxlist).forEach(tokenid => {
         var arg = vm.pubkeyData ? [tokenid, vm.pubkeyData] : [tokenid];
-
-        const localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/calls`;
-
-        axios
-          .post(
-            localHost,
-            {
-              method: "tokenBalance",
-              params: [...arg]
-            },
-            {
-              params: "searchTerm"
-            }
-          )
-          .then(function(response) {
-            // console.log(response.data);
-            let balance = response.data.balance;
+        vm.rpc.tokenBalance(...arg, function(err, ret) {
+          if (err) {
+            console.error(err);
+          } else {
+            let balance = ret.result.balance;
             vm.totalBalance += balance;
             // vm.balanceListDataRaw.push(ret.result);
             // vm.balanceMapping[ret.result.tokenid] = ret.result.balance;
-            vm.$set(vm.balanceMapping, response.data.tokenid, balance);
+            vm.$set(vm.balanceMapping, ret.result.tokenid, balance);
             if (!vm.pokemonAPIDataLoaded) {
-              let pokemonName = pokemontxlist[tokenid];
+              let pokemonName = pokemontxlist[tokenid]; // retrieve name from on-chain data instead ?
+              // let pokemonUrl = `https://pokeapi.glitch.me/v1/pokemon/${pokemonName}`;
               let pokemonUrl = `https://pokeapi.glitch.me/v1/pokemon/${pokemonName}`;
-              let proxyAPI = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/pokemon/${pokemonName}`;
+              let localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/pokemon/${pokemonName}`;
+
               axios
-                .get(proxyAPI)
+                .get(pokemonUrl)
                 .then(reponse => {
                   console.log("axios called!");
                   vm.$set(vm.myPokemonAPIDataRaw, tokenid, reponse.data);
@@ -309,147 +298,42 @@ export default {
                 .catch(error => console.log(error))
                 .finally(() => (vm.pokemonAPIDataLoaded = true));
             }
-          })
-          .catch(error => console.error(error));
-
-        // vm.rpc.tokenBalance(...arg, function(err, ret) {
-        //   if (err) {
-        //     console.error(err);
-        //   } else {
-        //     let balance = ret.result.balance;
-        //     vm.totalBalance += balance;
-        //     // vm.balanceListDataRaw.push(ret.result);
-        //     // vm.balanceMapping[ret.result.tokenid] = ret.result.balance;
-        //     vm.$set(vm.balanceMapping, ret.result.tokenid, balance);
-        //     if (!vm.pokemonAPIDataLoaded) {
-        //       let pokemonName = pokemontxlist[tokenid];
-        //       let pokemonUrl = `https://pokeapi.glitch.me/v1/pokemon/${pokemonName}`;
-        //       axios
-        //         .get(pokemonUrl)
-        //         .then(reponse => {
-        //           console.log("axios called!");
-        //           vm.$set(vm.myPokemonAPIDataRaw, tokenid, reponse.data);
-        //         })
-        //         .catch(error => console.log(error))
-        //         .finally(() => (vm.pokemonAPIDataLoaded = true));
-        //     }
-        //   }
-        // });
+          }
+        });
       });
     },
     verifySignature() {
       console.log(rpcConfig.rpcRaddress);
-      const localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/calls`;
       let vm = this;
       let address = this.RaddressComputed
         ? this.RaddressComputed
         : rpcConfig.rpcRaddress;
-      axios
-        .post(
-          localHost,
-          {
-            method: "signMessage",
-            params: [address, "Pokemon"]
-          },
-          {
-            params: "searchTerm"
-          }
-        )
-        .then(function(response) {
-          console.log(response.data);
-          let signature = response.data;
-          axios
-            .post(
-              localHost,
-              {
-                method: "verifyMessage",
-                params: [address, signature, "Pokemon"]
-              },
-              {
-                params: "searchTerm"
-              }
-            )
-            .then(function(response) {
-              vm.isMine = response.data;
-              console.log(response.data);
-            })
-            .catch(error => {
-              console.error(error);
-              vm.isMine = false;
-              alert(
-                "Please sign & verify with correct private/public keys pair !"
-              );
-            });
-        })
-        .catch(error => {
-          console.error(error);
+      this.rpc.signMessage(address, "Pokemon", function(err, ret) {
+        if (err) {
+          console.error(err);
+          console.log("error is:", err.message);
           vm.isMine = false;
           alert("Please sign & verify with correct private/public keys pair !");
-        });
-
-      //   this.rpc.signMessage(address, "Pokemon", function(err, ret) {
-      //     if (err) {
-      //       console.error(err);
-      //       console.log("error is:", err.message);
-      //       vm.isMine = false;
-      //       alert("Please sign & verify with correct private/public keys pair !");
-      //       //   vm.showWarning = true;
-      //       //   setTimeout(() => (vm.showWarning = false), 4000);
-      //     } else {
-      //       //   console.log(ret.result);
-      //       let signature = ret.result;
-      //       vm.rpc.verifyMessage(address, signature, "Pokemon", function(
-      //         err,
-      //         ret
-      //       ) {
-      //         if (err) {
-      //           console.error(err);
-      //           vm.isMine = false;
-      //         } else {
-      //           console.log(ret.result);
-      //           vm.isMine = ret.result;
-      //         }
-      //       });
-      //     }
-      //   });
-    },
-    // testHandler() {
-    //   const localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}`;
-    //   console.log("testHandler called 2");
-    //   axios
-    //     .get(`${localHost}/pokemon/Mudkip`)
-    //     .then(response => console.log(response.data))
-    //     .catch(error => console.error(error));
-    //   //   axios
-    //   //     .get("https://pokeapi.glitch.me/v1/pokemon/Treecko")
-    //   //     .then(response => console.log(response.data[0].species))
-    //   //     .catch(error => console.error(error));
-    // },
-    // posttHandler() {
-    //   const localHost = `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/calls`;
-    //   console.log("postHandler called 2");
-    //   axios
-    //     .post(
-    //       localHost,
-    //       {
-    //         method: "tokenBalance",
-    //         params: [
-    //           "4cef23ac268b6193f18d4f5fa6c610e2ae80b37162675feae07fdffdbbe4cfdc",
-    //           "02dc98f064e3bf26a251a269893b280323c83f1a4d4e6ccd5e84986cc3244cb7c9"
-    //         ]
-    //       },
-    //       {
-    //         //work without headers settings
-    //         // headers: {
-    //         //   "Content-Type": "application/json",
-    //         //   "Access-Control-Allow-Origin": "*"
-    //         // },
-    //         params: "searchTerm"
-    //       }
-    //     )
-    //     .then(response => console.log(response.data))
-    //     .catch(error => console.error(error));
-    // }
+          //   vm.showWarning = true;
+          //   setTimeout(() => (vm.showWarning = false), 4000);
+        } else {
+          //   console.log(ret.result);
+          let signature = ret.result;
+          vm.rpc.verifyMessage(address, signature, "Pokemon", function(
+            err,
+            ret
+          ) {
+            if (err) {
+              console.error(err);
+              vm.isMine = false;
+            } else {
+              console.log(ret.result);
+              vm.isMine = ret.result;
+            }
+          });
+        }
+      });
+    }
   },
   computed: {
     // balanceListDataComp() {
@@ -531,5 +415,3 @@ export default {
 
 <style>
 </style>
-
-

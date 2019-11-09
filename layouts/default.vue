@@ -67,7 +67,12 @@ export default {
           icon: "mdi-pokeball",
           title: "Pokédex",
           to: "/pokedex"
-        }
+        },
+        // {
+        //   icon: "mdi-test-tube",
+        //   title: "Testing",
+        //   to: "/testing"
+        // }
       ],
       miniVariant: false,
       right: true,
