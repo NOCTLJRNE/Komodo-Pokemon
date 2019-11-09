@@ -1,4 +1,4 @@
 export default {
-  proxyHost: "192.168.1.12",
+  proxyHost: "127.0.0.1",
   proxyPort: "3001"
 };
