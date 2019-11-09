@@ -56,7 +56,7 @@ On Windows:
 Copy your Google Chrome shortcut into a new one, then edit its Properties/Shortcut/Target value: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/ChromeDevSession"
 Then open a new windows with it. 
 Don't use these windows to browse online websites btw
-Browse to http://localhost:3000/pokedex (if you have succesfully run npm run start)
+Browse to http://localhost:3000/pokedex (if you have succesfully run **npm run start**)
 All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
 You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon !
