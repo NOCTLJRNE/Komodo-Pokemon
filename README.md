@@ -46,17 +46,12 @@ $ npm run build
 $ npm run start
 
 ```
-I run into an issue related to "Access-Control-Allow-Origin" header, basically the web browser blocks any result returned by my rpc requests because I didn't properly set up my server-side application on the localhost, you can read about it [here](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS/Errors/CORSMissingAllowOrigi) . For now I use this work around [link](https://stackoverflow.com/questions/3102819/disable-same-origin-policy-in-chrome).
-On Ubuntu:
-``` bash
-# launch a google chrome window with --disable-web-security arguement
-google-chrome --user-data-dir=/tmp --disable-web-security
-````
-On Windows:
-Copy your Google Chrome shortcut into a new one, then edit its Properties/Shortcut/Target value: "C:\Program Files (x86)\Google\Chrome\Application\chrome.exe" --disable-web-security --user-data-dir="C:/ChromeDevSession"
-Then open a new windows with it. 
-Don't use these windows to browse online websites btw
-Browse to http://localhost:3000/pokedex (if you have succesfully run npm run start)
+I run into an issue related to "Access-Control-Allow-Origin" header, the reason is because I fetch Pokémon descriptions & images from this [API](http://pokeapi.glitch.me/v1/pokemon/), the server's response doesn't have "Access-Control-Allow-Origin" header, web browsers will block "cross-origin requests" without this header. Luckily I found the solution, which is using a proxy (based on NodeJS & express) to make the requests to the API, then adding the "Access-Control-Allow-Origin" header to the requests responses, before sending the responses to the browser. All you need to do is open 2nd terminal & run:
+```
+$ npm run proxy
+# wait till you see "CORS-enabled web server listening on port 3001"
+```    
+Browse to http://localhost:3000/pokedex (if you have succesfully run the above commands w/o any error)
 All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
 You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon !
