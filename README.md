@@ -65,16 +65,16 @@ At the moment of updating this branch, I addedsome functionalities to the app, i
 ![stage2](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/02-info.JPG)
 
 ---
-
-Toggle transfer
+Toggle the Enable/Disable transfer switch allow you to transfer your tokesn to another pupkey address (you must first verify your signature). After entering the number of Pokémon tokens that you wish to transfer & clicking the TRANSFER button, you will be prompted to confirm and the app will return your txid.
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
 
 ---
-Toggle ask/bid
+Toggle the Enable/Disable ask/bid allow you to place ask/bid orders (the transfer & ask/bid switches cannot be both toggled on at the same time). After filling your order details (number of tokens to buy/sell & price per token) & clicking the ASK/BID button, you will be prompted to confirm your order and the app will return your txid.
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
 
 ---
 The marketplace tab shows existing orders (by clicking on the REFRESH ORDERS button, the list of orders is not updated unless this button is clicked) and allow users to interact with it (buy/sell). After entering the number of Pokémon tokens that you wish to buy/sell & clicking the BUY/SELL button, you will be prompted to confirm your order and the app will return your txid.
 ![stage5](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/05-marketplace.JPG)
+
 ---
 
