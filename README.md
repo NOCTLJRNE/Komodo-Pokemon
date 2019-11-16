@@ -69,7 +69,7 @@ Toggle the Enable/Disable transfer switch allow you to transfer your tokens to a
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
 
 ---
-Toggle the Enable/Disable ask/bid allow you to place ask/bid orders (the transfer switch & ask/bid switch cannot be both toggled on at the same time). After filling your order details (number of tokens to buy/sell & price per token) & clicking the ASK/BID button, you will be prompted to confirm your order and the app will return your txid.
+Toggle the Enable/Disable ask/bid allow you to place ask/bid orders (the transfer switch & ask/bid switch cannot be both toggled on at the same time). After filling your order details (number of tokens to buy/sell & price per token) & clicking the ASK/BID button, you will be prompted to confirm your order and the app will return your txid, I didn't add the functionality to cancel orders, so if you want to cancel an order, you have to fill it yourself.
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
 
 ---
