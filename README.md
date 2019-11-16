@@ -58,15 +58,14 @@ As stated above I run into an issue related to "Access-Control-Allow-Origin" hea
 Now browse to http://localhost:3000/pokedex (if you have succesfully run the above commands w/o any error)
 All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
-You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon !
+You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon!
 ![stage1](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/01.JPG)
 At the moment of updating this branch, I addedsome functionalities to the app, including tokentransfer, tokenask/bid, tokenask/bid fill, the documentation of thes commands can be found [here](https://developers.komodoplatform.com/basic-docs/antara/antara-api/assets.html#introduction) ... Basically these methods allow users to transfer/trade theirs Pokémon tokens using this app. 
-![stage0](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/00-welcome.JPG)
----
+
 ![stage2](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/02-info.JPG)
----
+
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
----
+
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
----
+
 ![stage5](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/05-marketplace.JPG)
