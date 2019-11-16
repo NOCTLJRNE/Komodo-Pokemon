@@ -375,40 +375,14 @@ export default {
       //   });
       var temp = [];
       let vm = this;
-      // Get tokens List
-      //   this.rpc.tokenList(function(err, ret) {
-      //     if (err) {
-      //       console.error(err);
-      //     } else {
-      //       //   console.log(ret.result);
-      //       vm.tokenListDataRaw = [...ret.result];
-      //       //   console.log("ret result", vm.tokenListDataRaw);
-      //     }
-      //   });
+      let rpcConfigURL =  `http://${proxyConfig.proxyHost}:${proxyConfig.proxyPort}/rpcconfig`
+        // axios.post(rpcConfigURL,
+        //     {
+        //       method: "set",
+        //       params: [...arg]
+        //     }
 
-      //   axios
-      //     .post(
-      //       localProxy,
-      //       {
-      //         method: "tokenList",
-      //         params: []
-      //       },
-      //       {
-      //         params: "searchTerm"
-      //       }
-      //     )
-      //     .then(response => (vm.tokenListDataRaw = [...response.data]))
-      //     .catch(error => console.error(error));
-
-      //   Object.keys(pokemontxlist).forEach(tokenid => {
-      //     vm.rpc.tokenInfo(tokenid, function(err, ret) {
-      //       if (err) {
-      //         console.error(err);
-      //       } else {
-      //         // vm.tokenInfoDataRaw.push(ret.result);
-      //       }
-      //     });
-      //   });
+        //   )
 
       this.balanceChecking();
       if (!this.interval) {

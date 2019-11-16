@@ -1,14 +1,21 @@
-import "dotenv/config";
+// import "dotenv/config";
 import RpcClient from "../modules/bitcoindrpc.js";
 import axios from "axios";
 import pokemontxList from "../static/pokemontxList";
+import rpcConfig from "../rpcConfig.js";
 var express = require("express");
 var cors = require("cors");
-const rpcHost = process.env.RPCHOST;
-const rpcPort = process.env.RPCPORT;
-const rpcUser = process.env.RPCUSER;
-const rpcPassword = process.env.RPCPASSWORD;
-const rpcPubkey = process.env.RPCPUBKEY;
+// const rpcHost = process.env.RPCHOST;
+// const rpcPort = process.env.RPCPORT;
+// const rpcUser = process.env.RPCUSER;
+// const rpcPassword = process.env.RPCPASSWORD;
+// const rpcPubkey = process.env.RPCPUBKEY;
+
+const rpcHost = rpcConfig.rpcHost;
+const rpcPort = rpcConfig.rpcPort;
+const rpcUser = rpcConfig.rpcUser;
+const rpcPassword = rpcConfig.rpcPassword;
+const rpcPubkey = rpcConfig.rpcPubkey;
 
 var app = express();
 app.use(express.json()); //using this solve the empty body issue
