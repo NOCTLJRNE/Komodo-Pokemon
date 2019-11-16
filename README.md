@@ -43,16 +43,26 @@ $ npm run dev
 
 # build for production and launch server
 $ npm run build
+# wait till the build finish
 $ npm run start
-
+# The application will be available on localhost:3000
 ```
-I run into an issue related to "Access-Control-Allow-Origin" header, the reason is because I fetch Pokémon descriptions & images from this [API](http://pokeapi.glitch.me/v1/pokemon/), the server's response doesn't have "Access-Control-Allow-Origin" header, web browsers will block "cross-origin requests" without this header. Luckily I found the solution, which is using a proxy (based on NodeJS & express) to make the requests to the API, then adding the "Access-Control-Allow-Origin" header to the requests responses, before sending the responses to the browser. All you need to do is open 2nd terminal & run:
-```
+Before browsing the app, open a 2nd terminal & run:
+``` bash
+# Launch a proxy to get rid of the CORS problem
 $ npm run proxy
 # wait till you see "CORS-enabled web server listening on port 3001"
-```    
-Browse to http://localhost:3000/pokedex (if you have succesfully run the above commands w/o any error)
+```
+As stated above I run into an issue related to "Access-Control-Allow-Origin" header, the reason is because I fetch Pokémon descriptions & images from this [API](http://pokeapi.glitch.me/v1/pokemon/), the server's response doesn't have "Access-Control-Allow-Origin" header, web browsers will block "cross-origin requests" without this header. Luckily I found the solution, which is using a proxy (based on NodeJS & express) to make the requests to the API, then adding the "Access-Control-Allow-Origin" header to the requests responses, before sending the responses to the browser. 
+ 
+Now browse to http://localhost:3000/pokedex (if you have succesfully run the above commands w/o any error)
 All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
 You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon !
-![stage1](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/master/img/01.JPG)
+![stage1](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/01.JPG)
+At the moment of updating this branch, I addedsome functionalities to the app, including tokentransfer, tokenask/bid, tokenask/bid fill, the documentation of thes commands can be found (here)[https://developers.komodoplatform.com/basic-docs/antara/antara-api/assets.html#introduction] ... Basically these methods allow users to transfer/trade theirs Pokémon tokens using this app 
+![stage0](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/00-welcome.JPG)
+![stage2](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/02-info.JPG)
+![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
+![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
+![stage5](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/05-marketplace.JPG)
