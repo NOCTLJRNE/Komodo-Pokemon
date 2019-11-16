@@ -67,5 +67,5 @@ At the moment of updating this branch, I addedsome functionalities to the app, i
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
 
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
-
+---
 ![stage5](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/05-marketplace.JPG)
