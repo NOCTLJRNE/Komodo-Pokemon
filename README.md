@@ -60,16 +60,16 @@ All text fields should be prefilled with the information you configured.
 Click on SUBMIT.
 You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll send you a starter Pokémon!
 ![stage1](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/01.JPG)
-At the moment of updating this branch, I addedsome functionalities to the app, including tokentransfer, tokenask/bid, tokenask/bid fill, the documentation of thes commands can be found [here](https://developers.komodoplatform.com/basic-docs/antara/antara-api/assets.html#introduction) ... Basically these methods allow users to transfer/trade theirs Pokémon tokens using this app. 
+At the moment of updating this branch, I added some functionalities to the app, including tokentransfer, tokenask/bid, tokenask/bid fill, the documentation of these commands can be found [here](https://developers.komodoplatform.com/basic-docs/antara/antara-api/assets.html#introduction) ... Basically these methods allow users to transfer/trade theirs Pokémon tokens using this app. 
 
 ![stage2](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/02-info.JPG)
 
 ---
-Toggle the Enable/Disable transfer switch allow you to transfer your tokesn to another pupkey address (you must first verify your signature). After entering the number of Pokémon tokens that you wish to transfer & clicking the TRANSFER button, you will be prompted to confirm and the app will return your txid.
+Toggle the Enable/Disable transfer switch allow you to transfer your tokens to another pubkey address (you must first verify your signature). After entering the number of Pokémon tokens that you wish to transfer & clicking the TRANSFER button, you will be prompted to confirm and the app will return your txid.
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
 
 ---
-Toggle the Enable/Disable ask/bid allow you to place ask/bid orders (the transfer & ask/bid switches cannot be both toggled on at the same time). After filling your order details (number of tokens to buy/sell & price per token) & clicking the ASK/BID button, you will be prompted to confirm your order and the app will return your txid.
+Toggle the Enable/Disable ask/bid allow you to place ask/bid orders (the transfer switch & ask/bid switch cannot be both toggled on at the same time). After filling your order details (number of tokens to buy/sell & price per token) & clicking the ASK/BID button, you will be prompted to confirm your order and the app will return your txid.
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
 
 ---
