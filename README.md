@@ -63,9 +63,9 @@ You don't have any Pokémon ? Let me know in Komodo's Discord #cc-assets, I'll s
 At the moment of updating this branch, I addedsome functionalities to the app, including tokentransfer, tokenask/bid, tokenask/bid fill, the documentation of thes commands can be found [here](https://developers.komodoplatform.com/basic-docs/antara/antara-api/assets.html#introduction) ... Basically these methods allow users to transfer/trade theirs Pokémon tokens using this app. 
 
 ![stage2](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/02-info.JPG)
-
+---
 ![stage3](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/03-transfer.JPG)
-
+---
 ![stage4](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/04-askbid.JPG)
 ---
 ![stage5](https://raw.githubusercontent.com/NOCTLJRNE/Komodo-Pokemon/dex/img/05-marketplace.JPG)
