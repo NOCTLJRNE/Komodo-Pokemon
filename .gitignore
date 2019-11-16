@@ -9,7 +9,15 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 #source files
-src/
+src/api/
+src/coins/
+src/auth.js
+src/coins.js
+src/config.js
+src/credentials.js
+src/redisCache.js
+src/test.js
+src/utils.js
 # Runtime data
 pids
 *.pid
