@@ -5,7 +5,7 @@
   "author": "NOCTLJRNE",
   "private": true,
   "scripts": {
-    "dev": "nuxt && nodemon --exec babel-node src/proxy.js",
+    "dev": "nuxt",
     "proxy": "nodemon --exec babel-node src/proxy.js",
     "build": "nuxt build",
     "start": "nuxt start",
@@ -17,12 +17,13 @@
     "axios": "^0.19.0",
     "bitcoind-rpc": "^0.8.1",
     "bs58": "^4.0.1",
-    "crypto-js": "3.1.9-1",
-    "nuxt": "^2.0.0",
-    "vuetify": "^2.1.7",
     "cors": "^2.8.5",
+    "crypto-js": "3.1.9-1",
     "dotenv": "^8.2.0",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "npm-run-all": "^4.1.5",
+    "nuxt": "^2.0.0",
+    "vuetify": "^2.1.7"
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.0.0",
