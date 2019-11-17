@@ -21,6 +21,8 @@ curl --user rpc_username:rpc_password --data-binary '{"jsonrpc": "1.0", "id":"cu
 Clone Komodo-Pokemon repo
 ``` bash
 $ git clone https://github.com/NOCTLJRNE/Komodo-Pokemon.git
+cd Komodo-Pokemon
+git checkout dex
 ```
 Rename rpcConfig_sample.js into rpcConfig.js and edit its content 
 ```
