@@ -2,6 +2,8 @@
 
 > Pokémon NFT created on Komodo
 
+### Please checkout dex branch for te latest update
+
 ## Setting Up
 Follow these instructions to install komodo on your local host [instructions](https://docs.komodoplatform.com/notary/setup-Komodo-Notary-Node.html#install-komodo-by-compiling-it-from-source)
 ``` bash
