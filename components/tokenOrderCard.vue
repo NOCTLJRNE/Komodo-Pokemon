@@ -1,5 +1,5 @@
 <template>
-  <v-card tile class="ms-1 mb-1" cols="12" max-width="370px">
+  <v-card class="ms-1 mb-1" cols="12" max-width="370px">
     <!-- <div class="d-flex flex-wrap justify-space-between"> -->
     <v-container>
       <v-row>
