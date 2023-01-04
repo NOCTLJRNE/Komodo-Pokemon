@@ -17,7 +17,7 @@
     "bitcoind-rpc": "^0.8.1",
     "bs58": "^4.0.1",
     "crypto-js": "3.1.9-1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "vuetify": "^2.1.7"
   },
   "devDependencies": {
